@@ -21,7 +21,6 @@ $abrir = 'ArchivosTxt'; //Carpeta de archivos
         }
     }
 
-    
-
+    header("Location: index.php");
 
 ?>
