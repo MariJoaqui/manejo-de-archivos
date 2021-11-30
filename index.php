@@ -127,7 +127,7 @@
 
     if ($openDirectorio = opendir($abrirDirectorio)) {
         while ($archivoDirectorio = readdir($openDirectorio)) {
-            if ($archivoDirectorio != '.' && $archivoDirectorio != '..') {
+            if ($archivoDirectorio != '.' && $archivoDirectorio != '..' && $archivoDirectorio != '..txt') {
                 echo '<div class="card-panel indigo lighten-4"><div class="container">
                         <a href="descargar.php?file=' . $archivoDirectorio . ' " class="waves-effect waves-light btn indigo lighten-1 right">Descargar
                             </a>' . ' ' . $archivoDirectorio . 
