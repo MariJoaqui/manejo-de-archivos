@@ -58,7 +58,7 @@
 
             $abrir = 'ArchivosTxt'; //Carpeta de archivos
 
-            $ruta = $_SERVER['DOCUMENT_ROOT'] . '/ManejoDeArchivos/archivosTxt';
+            $ruta = $_SERVER['DOCUMENT_ROOT'];
 
             if ($open = opendir($abrir)) {
                 while ($archivo = readdir($open)) {

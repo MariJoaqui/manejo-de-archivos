@@ -60,7 +60,7 @@
             $nombre = $_REQUEST['nombreArchivo'];
             $contenido = $_REQUEST['contenidoArchivo'];
 
-            $ruta = $_SERVER['DOCUMENT_ROOT'] . '/ManejoDeArchivos/archivosTxt';
+            $ruta = $_SERVER['DOCUMENT_ROOT'];
 
             $file = fopen($ruta . "/$nombre" . '.txt', 'a+') or die ("Error al crear archivo"); //Se crea el archivo txt y se establece su ruta
 
