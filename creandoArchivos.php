@@ -4,7 +4,9 @@
 $nombre = $_REQUEST['nombreArchivo'];
 $contenido = $_REQUEST['contenidoArchivo'];
 
-$file = fopen('archivosTxt' . "/$nombre" . '.txt', 'a+') or die ("Error al crear archivo"); //Se crea el archivo txt y se establece su ruta
+$ruta = $_SERVER['DOCUMENT_ROOT'] . '/ManejoDeArchivos/ArchivosTxt';
+
+$file = fopen("$ruta" . "/$nombre" . '.txt', 'a+') or die ("Error al crear archivo"); //Se crea el archivo txt y se establece su ruta
 
 fwrite($file, $contenido); //Se añade al archivo
 
