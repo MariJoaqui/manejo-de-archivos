@@ -69,33 +69,11 @@
             fclose($file);
 
             echo '<div class="card-panel indigo lighten-4"><div class="container">
-                    <a href="editar.php?file=' . $file . ' " class="waves-effect waves-light btn indigo lighten-1 right">Editar
+                    <a href="editar.php?file=' . $file . ' " class="waves-effect waves-light btn indigo lighten-1 right">Descargar
                     </a>' . ' ' . $nombre . '.txt' . 
                 '</div></div>';
 
             ?>
-
-        </div>
-    </div>
-
-    <div class="fondo-section">
-        <div class="container section black-text">
-
-            <div class="divider"></div>
-
-            <div class="section">
-
-                <h5>¿Desea ver todos los archivos y su contenido?</h5>
-
-            </div>
-
-            <div class="section">
-
-                <a href="ver.php?file=' . $archivo . ' " class="waves-effect waves-light btn indigo lighten-1" name="abrir">Ver</a>
-
-            </div>
-
-            <div class="divider"></div>
 
         </div>
     </div>

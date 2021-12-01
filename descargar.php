@@ -4,7 +4,7 @@
 $entrada = $_REQUEST['file']; //Archivo a descargar
 
 $ruta = 'archivosTxt/'; //Carpeta donde se encuentra el archivo
-$rutaCompleta = $ruta.$entrada; //Ruta completa del archivo
+$rutaCompleta = $rutaArchivo.$entrada; //Ruta completa del archivo
 $type = '';
 
 //Proceso de verificación
