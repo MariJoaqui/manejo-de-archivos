@@ -47,7 +47,7 @@
 
                 <h5>Editar contenido: </h5>
 
-                <p>Aquí se pueden editar el contenido de los archivos txt.<br><br>
+                <p>Aquí se pueden editar el contenido todos los archivos txt.<br><br>
                     Escriba el nuevo contenido:
                 </p>
 

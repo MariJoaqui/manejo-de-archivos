@@ -47,103 +47,39 @@
 
                 <h5>Archivos Txt y Directorios: </h5>
 
-                <p>Aquí se mostrarán los archivos y directorios creados.<br><br>
-                Podrá crear, ver su contenido o descargarlos.</p>
-
             </div>
                 
             <div class="divider"></div>
 
-            <div class="section">
-
-                <h5>Archivos Txt: </h5>
-
-            </div>
-
-            <div class="divider"></div>
-
-        </div>
-    </div>
-
-    <!--MOSTRANDO ARCHIVOS TXT-->
-
-    <?php
-
-    $linea = null;
-    $file = $_SERVER['DOCUMENT_ROOT'] . '/ManejoDeArchivos/ArchivosTxt' . "/$linea";
-
-    if ($open = opendir($file)) {
-        while ($archivo = readdir($open)) {
-            if ($archivo != '.' && $archivo != '..') {
-
-                $linea = $archivo;
-
-                    echo '<div class="card-panel indigo lighten-4"><div class="container">
-                        <a href="editar.php?file=' . $linea . ' " class="waves-effect waves-light btn indigo lighten-1">Editar
-                        </a>
-                        <a href="descargar.php?file=' . $linea . ' " class="waves-effect waves-light btn indigo lighten-1 right">Descargar
-                        </a>' . ' ' . $linea . 
-                    '</div></div>';
-            
-            }
-        }
-    }
-
-    ?>
-
-    <div class="fondo-section">
-        <div class="container section black-text">
-
-            <div class="section">
-
-                <h5>¿Desea ver el contenido de los archivos?</h5>
-
-            </div>
-
-            <div class="section">
-
-                <a href="ver.php?file=' . $archivo . ' " class="waves-effect waves-light btn indigo lighten-1" name="abrir">Ver Contenido</a>
-
-            </div>
-
-            <div class="divider"></div>
-
-        </div>
-    </div>
-    
-    <!--MOSTRANDO DIRECTORIOS-->
-
-    <div class="fondo-section">
-        <div class="container section black-text">
-
-            <div class="divider"></div>
+            <!--MOSTRANDO DIRECTORIOS-->
 
             <div class="section">
 
                 <h5>Directorios: </h5>
 
+                <p>Aquí se mostrarán los directorios creados y podrá descargarlos</p>
+
             </div>
 
-            <div class="divider"></div>
+            <?php
+
+            $abrirDirectorio = 'Directorios';
+
+            if ($openDirectorio = opendir($abrirDirectorio)) {
+                while ($archivoDirectorio = readdir($openDirectorio)) {
+                    if ($archivoDirectorio != '.' && $archivoDirectorio != '..' && $archivoDirectorio != '..txt') {
+                        echo '<div class="card-panel indigo lighten-4"><div class="container">
+                                <a href="descargar.php?file=' . $archivoDirectorio . ' " class="waves-effect waves-light btn indigo lighten-1 right">Descargar
+                                </a>' . ' ' . $archivoDirectorio . 
+                                '</div></div>';
+                    }
+                }
+            }
+    
+            ?>
 
         </div>
     </div>
-
-    <?php
-    $abrirDirectorio = 'Directorios';
-
-    if ($openDirectorio = opendir($abrirDirectorio)) {
-        while ($archivoDirectorio = readdir($openDirectorio)) {
-            if ($archivoDirectorio != '.' && $archivoDirectorio != '..' && $archivoDirectorio != '..txt') {
-                echo '<div class="card-panel indigo lighten-4"><div class="container">
-                        <a href="descargar.php?file=' . $archivoDirectorio . ' " class="waves-effect waves-light btn indigo lighten-1 right">Descargar
-                            </a>' . ' ' . $archivoDirectorio . 
-                    '</div></div>';
-            }
-        }
-    }
-    
-    ?>
 
     <div class="fondo-section">
         <div class="container section black-text">

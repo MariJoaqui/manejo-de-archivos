@@ -47,7 +47,8 @@
 
                 <h5>Creación de archivos Txt: </h5>
 
-                <p>Aquí se pueden crear archivos txt y su contenido contenido.</p>
+                <p>Aquí se pueden crear archivos txt y su contenido contenido.<br><br>
+                    Para poder ver todos los archivos creados debe añadir uno nuevo.</p>
 
             </div>
                 

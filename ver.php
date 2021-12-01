@@ -87,7 +87,7 @@
 
             <div class="container">
 
-                <a href="index.php" class="waves-effect waves-light btn indigo lighten-1">Volver</a>
+                <a href="crearTxt.php" class="waves-effect waves-light btn indigo lighten-1">Volver</a>
 
             </div>
         </div>

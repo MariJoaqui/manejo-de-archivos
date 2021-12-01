@@ -1,9 +1,3 @@
-<?php
-
-
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -51,76 +45,51 @@
 
             <div class="section">
 
-                <h5>Archivos Txt y Directorios: </h5>
-
-                <p>Aquí se mostrarán los archivos y directorios creados.<br><br>
-                Podrá crear, ver su contenido o descargarlos.</p>
-
-            </div>
-                
-            <div class="divider"></div>
-
-            <div class="section">
-
                 <h5>Archivos Txt: </h5>
 
+                <p>Aquí se muestra el archivo creado.<br><br>
+                Podrá ver su contenido, editarlo o descargarlos.</p>
+
             </div>
 
-            <div class="divider"></div>
+            <!--MOSTRANDO ARCHIVOS TXT-->
+
+            <?php
+
+            //Para crear archivos de texto
+            $nombre = $_REQUEST['nombreArchivo'];
+            $contenido = $_REQUEST['contenidoArchivo'];
+
+            $file = fopen( 'archivosTxt' . "/$nombre" . '.txt', 'a+') or die ("Error al crear archivo"); //Se crea el archivo txt y se establece su ruta
+
+            fwrite($file, $contenido); //Se añade al archivo
+
+            fclose($file);
+
+            echo '<div class="card-panel indigo lighten-4"><div class="container">
+                    <a href="editar.php?file=' . $file . ' " class="waves-effect waves-light btn indigo lighten-1 right">Editar
+                    </a>' . ' ' . $nombre . '.txt' . 
+                '</div></div>';
+
+            ?>
 
         </div>
     </div>
 
-    <!--MOSTRANDO ARCHIVOS TXT-->
-
-    <?php
-
-    //Para crear archivos de texto
-    $nombre = $_REQUEST['nombreArchivo'];
-    $contenido = $_REQUEST['contenidoArchivo'];
-
-    $ruta = $_SERVER['DOCUMENT_ROOT'] . '/ManejoDeArchivos/ArchivosTxt';
-
-    $file = fopen($ruta . "/$nombre" . '.txt', 'a+') or die ("Error al crear archivo"); //Se crea el archivo txt y se establece su ruta
-
-    fwrite($file, $contenido); //Se añade al archivo
-
-    fclose($file);
-
-    /*$linea = null;
-    $file = $_SERVER['DOCUMENT_ROOT'] . '/ManejoDeArchivos/ArchivosTxt' . "/$linea";
-
-    if ($open = opendir($file)) {
-        while ($archivo = readdir($open)) {
-            if ($archivo != '.' && $archivo != '..') {*/
-
-                //$linea = $archivo;
-
-                    echo '<div class="card-panel indigo lighten-4"><div class="container">
-                        <a href="editar.php?file=' . $nombre . ' " class="waves-effect waves-light btn indigo lighten-1">Editar
-                        </a>
-                        <a href="descargar.php?file=' . $nombre . ' " class="waves-effect waves-light btn indigo lighten-1 right">Descargar
-                        </a>' . ' ' . $nombre .'.txt' . 
-                    '</div></div>';
-            
-            //}
-       // }
-    //}
-
-    ?>
-
     <div class="fondo-section">
         <div class="container section black-text">
 
+            <div class="divider"></div>
+
             <div class="section">
 
-                <h5>¿Desea ver el contenido de los archivos?</h5>
+                <h5>¿Desea ver todos los archivos y su contenido?</h5>
 
             </div>
 
             <div class="section">
 
-                <a href="ver.php?file=' . $archivo . ' " class="waves-effect waves-light btn indigo lighten-1" name="abrir">Ver Contenido</a>
+                <a href="ver.php?file=' . $archivo . ' " class="waves-effect waves-light btn indigo lighten-1" name="abrir">Ver</a>
 
             </div>
 
@@ -129,48 +98,6 @@
         </div>
     </div>
     
-    <!--MOSTRANDO DIRECTORIOS-->
-
-    <div class="fondo-section">
-        <div class="container section black-text">
-
-            <div class="divider"></div>
-
-            <div class="section">
-
-                <h5>Directorios: </h5>
-
-            </div>
-
-            <div class="divider"></div>
-
-        </div>
-    </div>
-
-    <?php
-    $abrirDirectorio = 'Directorios';
-
-    if ($openDirectorio = opendir($abrirDirectorio)) {
-        while ($archivoDirectorio = readdir($openDirectorio)) {
-            if ($archivoDirectorio != '.' && $archivoDirectorio != '..' && $archivoDirectorio != '..txt') {
-                echo '<div class="card-panel indigo lighten-4"><div class="container">
-                        <a href="descargar.php?file=' . $archivoDirectorio . ' " class="waves-effect waves-light btn indigo lighten-1 right">Descargar
-                            </a>' . ' ' . $archivoDirectorio . 
-                    '</div></div>';
-            }
-        }
-    }
-    
-    ?>
-
-    <div class="fondo-section">
-        <div class="container section black-text">
-
-            <div class="divider"></div>
-
-        </div>
-    </div>
-
     <!--FOOTER-->
 
     <footer class="page-footer indigo lighten-4">
