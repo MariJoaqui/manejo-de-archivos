@@ -69,10 +69,8 @@
             fclose($file);
 
             echo '<div class="card-panel indigo lighten-4"><div class="container">
-                    <a href="editar.php?file=' . $file . ' " class="waves-effect waves-light btn indigo lighten-1 right">Descargar
-                    </a>' . ' ' . $nombre . '.txt' . 
+                    ' . ' ' . $nombre . '.txt' . 
                 '</div></div>';
-
             ?>
 
         </div>
