@@ -53,6 +53,7 @@
                     while ($archivo = readdir($open)) {
                         if ($archivo != '.' && $archivo != '..') {
                         $lectura = fopen('archivosTxt' . "/$archivo", 'r') or die ("error al intentar leer archivo");
+                        $a = $archivo;
                         
                         while(!feof($lectura)){
                             $obtener = fgets($lectura);
@@ -62,7 +63,7 @@
 
                                             <div class="section">
 
-                                                <h5>Nombre del archivo: '. $archivo .'</h5>
+                                                <h5>Nombre del archivo: '. $a .'</h5>
 
                                             </div>
 

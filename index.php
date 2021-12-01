@@ -73,11 +73,14 @@
     if ($open = opendir($abrir)) {
         while ($archivo = readdir($open)) {
             if ($archivo != '.' && $archivo != '..') {
-                echo '<div class="card-panel indigo lighten-4"><div class="container">
-                        <a href="editar.php?file=' . $archivo . ' " class="waves-effect waves-light btn indigo lighten-1">Editar
+                $fp = fopen('archivosTxt' . "/$archivo", "r");
+                $linea = $archivo;
+
+                    echo '<div class="card-panel indigo lighten-4"><div class="container">
+                        <a href="editar.php?file=' . $linea . ' " class="waves-effect waves-light btn indigo lighten-1">Editar
                         </a>
-                        <a href="descargar.php?file=' . $archivo . ' " class="waves-effect waves-light btn indigo lighten-1 right">Descargar
-                        </a>' . ' ' . $archivo . 
+                        <a href="descargar.php?file=' . $linea . ' " class="waves-effect waves-light btn indigo lighten-1 right">Descargar
+                        </a>' . ' ' . $linea . 
                     '</div></div>';
             }
         }
