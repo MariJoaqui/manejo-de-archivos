@@ -47,8 +47,6 @@
 
                 <h5>Contenido editado: </h5>
 
-                <p>Aquí se le cambia el contenido a los archivos de texto</p>
-
             </div>
 
             <!--MOSTRANDO ARCHIVOS TXT-->
@@ -60,10 +58,12 @@
 
             $abrir = 'ArchivosTxt'; //Carpeta de archivos
 
+            $ruta = $_SERVER['DOCUMENT_ROOT'] . '/ManejoDeArchivos/archivosTxt';
+
             if ($open = opendir($abrir)) {
                 while ($archivo = readdir($open)) {
                     if ($archivo != '.' && $archivo != '..') {
-                        $fp = fopen('archivosTxt' . "/$archivo", 'w+') or die ("Ocurrió un error");
+                        $fp = fopen($ruta . "/$archivo", 'w+') or die ("Ocurrió un error");
   
                         while(!feof($fp)){
                             $obtener = fgets($fp);
