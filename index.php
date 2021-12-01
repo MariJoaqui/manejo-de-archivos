@@ -68,21 +68,23 @@
     <!--MOSTRANDO ARCHIVOS TXT-->
 
     <?php
-    $abrir = 'ArchivosTxt'; //Carpeta de archivos
 
-    if ($open = opendir($abrir)) {
+    $linea = null;
+    //$abrir = 'ArchivosTxt'; //Carpeta de archivos
+    $file = $_SERVER['DOCUMENT_ROOT'] . '/ManejoDeArchivos/ArchivosTxt' . "/$linea";
+
+    if ($open = opendir($file)) {
         while ($archivo = readdir($open)) {
             if ($archivo != '.' && $archivo != '..') {
-                $fp = fopen('archivosTxt' . "/$archivo", "r");
-                $linea = $archivo;
 
                     echo '<div class="card-panel indigo lighten-4"><div class="container">
-                        <a href="editar.php?file=' . $linea . ' " class="waves-effect waves-light btn indigo lighten-1">Editar
+                        <a href="editar.php?file=' . $archivo . ' " class="waves-effect waves-light btn indigo lighten-1">Editar
                         </a>
-                        <a href="descargar.php?file=' . $linea . ' " class="waves-effect waves-light btn indigo lighten-1 right">Descargar
-                        </a>' . ' ' . $linea . 
+                        <a href="descargar.php?file=' . $archivo . ' " class="waves-effect waves-light btn indigo lighten-1 right">Descargar
+                        </a>' . ' ' . $archivo . 
                     '</div></div>';
-            }
+            
+                }
         }
     }
     ?>
