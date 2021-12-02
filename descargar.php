@@ -3,7 +3,8 @@
 //proceso de descarga de archivos
 $entrada = $_REQUEST['file']; //Archivo a descargar
 
-$ruta = 'archivosTxt/'; //Carpeta donde se encuentra el archivo
+$ruta = $_SERVER['DOCUMENT_ROOT'] . '/manejo-de-archivos/archivosTxt';
+//$ruta = 'archivosTxt/'; //Carpeta donde se encuentra el archivo
 $rutaCompleta = $rutaArchivo.$entrada; //Ruta completa del archivo
 $type = '';
 
