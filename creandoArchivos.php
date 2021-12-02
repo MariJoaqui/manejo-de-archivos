@@ -60,17 +60,26 @@
             $nombre = $_REQUEST['nombreArchivo'];
             $contenido = $_REQUEST['contenidoArchivo'];
 
-            $ruta = $_SERVER['DOCUMENT_ROOT'];
+            $ruta = $_SERVER['DOCUMENT_ROOT'] . '/manejo-de-archivos/archivosTxt';
 
             $file = fopen($ruta . "/$nombre" . '.txt', 'a+') or die ("Error al crear archivo"); //Se crea el archivo txt y se establece su ruta
+
+            $archivo = $file;
 
             fwrite($file, $contenido); //Se añade al archivo
 
             fclose($file);
 
-            echo '<div class="card-panel indigo lighten-4"><div class="container">
-                    ' . ' ' . $nombre . '.txt' . 
-                '</div></div>';
+            if ($open = opendir($ruta)) {
+                while ($archivo = readdir($open)) {
+                    if ($archivo != '.' && $archivo != '..') {
+                        echo '<div class="card-panel indigo lighten-4"><div class="container">
+                        <a href="descargar.php?file=' . $archivo . ' " class="waves-effect waves-light btn indigo lighten-1 right">Descargar
+                        </a>' . ' ' . $archivo . 
+                        '</div></div>';
+                    }
+                }
+            }
             ?>
 
         </div>
