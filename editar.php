@@ -45,50 +45,40 @@
 
             <div class="section">
 
-                <h5>Archivos Txt: </h5>
+                <h5>Nuevo contenido a los txt: </h5>
 
-                <p>Aquí se muestra el archivo creado.<br><br>
-                Podrá ver su contenido, editarlo o descargarlos.</p>
+                <p>Aquí se pueden cambiar el contenido contenido de los archivos de texto.<br><br>
 
             </div>
-
-            <!--MOSTRANDO ARCHIVOS TXT-->
-
-            <?php
-
-            //Para crear archivos de texto
-            $nombre = $_REQUEST['nombreArchivo'];
-            $contenido = $_REQUEST['contenidoArchivo'];
-
-            $ruta = $_SERVER['DOCUMENT_ROOT'] . '/manejo-de-archivos/archivosTxt';
-
-            $file = fopen($ruta . "/$nombre" . '.txt', 'a+') or die ("Error al crear archivo"); //Se crea el archivo txt y se establece su ruta
-
-            $archivo = $file;
-
-            fwrite($file, $contenido); //Se añade al archivo
-
-            fclose($file);
-
-            if ($open = opendir($ruta)) {
-                while ($archivo = readdir($open)) {
-                    if ($archivo != '.' && $archivo != '..') {
-                       echo '<div class="card-panel indigo lighten-4"><div class="container">
-                        <a href="descargar.php?file=' . $archivo . ' " class="waves-effect waves-light btn indigo lighten-1 right">Descargar
-                        </a>
-                        <a href="editar.php?file=' . $archivo . ' " class="waves-effect waves-light btn indigo lighten-1 right">Editar
-                        </a>
-                        <a href="mostrar.php?file=' . $archivo . ' " class="waves-effect waves-light btn indigo lighten-1 right">Ver
-                        </a>' . ' ' . $archivo . 
-                        '</div></div>';
-                    }
-                }
-            }
-            ?>
-
+                
         </div>
     </div>
-    
+
+    <?php
+        $entrada = $_REQUEST['file'];
+    ?>
+
+    <div class="container">
+        <div class="row">
+            <form class="col s12" action="cambiarContenido.php" method="POST">
+
+                <div class="row">
+                    <div class="input-field col s12">
+                        <textarea id="textarea2" class="materialize-textarea" data-length="120" name="contenidoNuevo"></textarea>
+                        <label class="indigo-text text-lighten-1" for="textarea2">Contenido:</label>
+                    </div>
+                </div>
+
+                <input type="hidden" name="formulario">
+                <?php
+                
+                echo '<a href="cambiarContenido.php?file=' . $entrada . ' 
+                " class="waves-effect waves-light btn indigo lighten-1 right">Añadir</a>'
+                ?>
+            </form>
+        </div>
+    </div>
+
     <!--FOOTER-->
 
     <footer class="page-footer indigo lighten-4">

@@ -45,50 +45,47 @@
 
             <div class="section">
 
-                <h5>Archivos Txt: </h5>
+                <?php
 
-                <p>Aquí se muestra el archivo creado.<br><br>
-                Podrá ver su contenido, editarlo o descargarlos.</p>
+                $entrada = $_REQUEST['file'];
+                $ruta = $_SERVER['DOCUMENT_ROOT'] . '/manejo-de-archivos/archivosTxt';
+
+                $fp = fopen($ruta."/$entrada", 'r') or die ("Ocurrió un error");
+
+                while(!feof($fp)){
+                    $obtener = fgets($fp);
+                    $obtener2 = nl2br($obtener);
+
+                    echo '<div class="fondo-section">
+                            <div class="container section black-text">
+                                <div class="section">
+                                    <h5>Nombre del archivo: '. $entrada .'</h5>
+                                </div>
+                                <div class="divider"></div>
+                                <div class="section">
+                                    <h5>Contenido: </h5><br><br>
+                                        '. $obtener2 .'
+                                </div>
+                                <div class="divider"></div>
+                            </div>
+                        </div>'; 
+                }
+                fclose($fp);
+
+                ?>
 
             </div>
 
-            <!--MOSTRANDO ARCHIVOS TXT-->
+            <div class="container">
 
-            <?php
+                <a href="crearTxt.php" class="waves-effect waves-light btn indigo lighten-1">Volver</a>
 
-            //Para crear archivos de texto
-            $nombre = $_REQUEST['nombreArchivo'];
-            $contenido = $_REQUEST['contenidoArchivo'];
-
-            $ruta = $_SERVER['DOCUMENT_ROOT'] . '/manejo-de-archivos/archivosTxt';
-
-            $file = fopen($ruta . "/$nombre" . '.txt', 'a+') or die ("Error al crear archivo"); //Se crea el archivo txt y se establece su ruta
-
-            $archivo = $file;
-
-            fwrite($file, $contenido); //Se añade al archivo
-
-            fclose($file);
-
-            if ($open = opendir($ruta)) {
-                while ($archivo = readdir($open)) {
-                    if ($archivo != '.' && $archivo != '..') {
-                       echo '<div class="card-panel indigo lighten-4"><div class="container">
-                        <a href="descargar.php?file=' . $archivo . ' " class="waves-effect waves-light btn indigo lighten-1 right">Descargar
-                        </a>
-                        <a href="editar.php?file=' . $archivo . ' " class="waves-effect waves-light btn indigo lighten-1 right">Editar
-                        </a>
-                        <a href="mostrar.php?file=' . $archivo . ' " class="waves-effect waves-light btn indigo lighten-1 right">Ver
-                        </a>' . ' ' . $archivo . 
-                        '</div></div>';
-                    }
-                }
-            }
-            ?>
-
+            </div>
+                
         </div>
     </div>
-    
+
+
     <!--FOOTER-->
 
     <footer class="page-footer indigo lighten-4">
