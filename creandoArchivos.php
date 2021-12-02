@@ -60,7 +60,7 @@
             $nombre = $_REQUEST['nombreArchivo'];
             $contenido = $_REQUEST['contenidoArchivo'];
 
-            $ruta = $_SERVER['DOCUMENT_ROOT'] . '/manejo-de-archivos/archivosTxt';
+            $ruta = $_SERVER['DOCUMENT_ROOT'];
 
             $file = fopen($ruta . "/$nombre" . '.txt', 'a+') or die ("Error al crear archivo"); //Se crea el archivo txt y se establece su ruta
 
@@ -70,7 +70,9 @@
 
             fclose($file);
 
-            if ($open = opendir($ruta)) {
+            $rutaAbrir = $_SERVER['DOCUMENT_ROOT'] . '/manejo-de-archivos/archivosTxt';
+
+            if ($open = opendir($rutaAbrir)) {
                 while ($archivo = readdir($open)) {
                     if ($archivo != '.' && $archivo != '..') {
                         echo '<div class="card-panel indigo lighten-4"><div class="container">
